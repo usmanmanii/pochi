@@ -2,10 +2,10 @@ node_modules/
 dist/
 coverage/
 .vite/
-.env*
 !.env.example
 *.sqlite*
 .turbo
 .DS_store
 
 *storybook.log
+config.bat
