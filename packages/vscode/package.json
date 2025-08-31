@@ -25,7 +25,9 @@
   ],
   "icon": "assets/icons/logo128.png",
   "main": "./dist/extension.js",
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "authentication": [
       {
@@ -218,11 +220,6 @@
                 "description": "Pochi webview UI log level"
               }
             }
-          },
-          "pochi.mcpServers": {
-            "order": 1,
-            "default": {},
-            "description": "MCP servers configuration for Pochi"
           }
         }
       }
@@ -234,8 +231,8 @@
   "private": true,
   "scripts": {
     "copy:webui": "rm -rf ./assets/webview-ui/dist && bun ./scripts/copy-webui-dist.js",
-    "build:vscode": "bun build ./src/extension.ts --outdir ./dist --external vscode --format cjs --target node --minify",
-    "build": "npm-run-all --parallel build:vscode copy:webui",
+    "build:vscode": "node init && bun build ./src/extension.ts --outdir ./dist --external vscode --format cjs --target node --minify",
+    "build": "node init && npm-run-all --parallel build:vscode copy:webui",
     "vscode:prepublish": "bun turbo build",
     "vscode:package": "vsce package --no-dependencies --allow-missing-repository",
     "vscode:publish": "vsce publish --no-dependencies --allow-missing-repository",
@@ -247,8 +244,8 @@
     "watch:webui": "cd ../vscode-webui && bun run start",
     "watch:vscode": "bun build ./src/extension.ts --outdir ./dist --external vscode --format cjs --target node --watch",
     "watch": "npm-run-all --parallel watch:vscode watch:webui",
-    "start": "code --extensionDevelopmentPath=$PWD",
-    "dev": "npm-run-all --parallel watch start",
+    "start": "node init && code --extensionDevelopmentPath=$PWD",
+    "dev": "node init && npm-run-all --parallel watch start",
     "tsc": "tsc --noEmit",
     "test": "vscode-test",
     "test:coverage": "npm run test -- --coverage --coverage-output ./coverage --coverage-reporter html --coverage-reporter text",

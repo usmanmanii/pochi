@@ -3,15 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "vite --port 4112",
-    "build:share": "POCHI_BUILD_TARGET=share vite build",
-    "build:default": "vite build",
-    "build": "npm-run-all --parallel build:share build:default",
+    "start": "node init && vite --port 4112",
+    "build:share": "node init && POCHI_BUILD_TARGET=share vite build",
+    "build:default": "node init && vite build",
+    "build": "node init && npm-run-all --parallel build:share build:default",
     "serve": "vite preview",
     "test": "bun vitest --run",
     "tsc": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "node init && storybook build"
   },
   "dependencies": {
     "@ai-sdk/react": "catalog:",
