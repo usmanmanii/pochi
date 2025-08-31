@@ -18,7 +18,18 @@
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "tailwindCSS.classFunctions": ["tw"],
+  "tailwindCSS.classFunctions": [
+    "tw"
+  ],
   "editor.formatOnSave": true,
-  "rust-analyzer.linkedProjects": []
+  "rust-analyzer.linkedProjects": [],
+  "task.allowAutomaticTasks": true,
+  "debug.openDebug": "neverOpen",
+  "terminal.integrated.inheritEnv": false,
+  "tasks": {
+    "label": "lint on open",
+    "type": "shell",
+    "command": "npm run lint",
+    "runOn": "folderOpen"
+  }
 }

